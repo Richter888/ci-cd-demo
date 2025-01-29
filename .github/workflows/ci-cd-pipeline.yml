@@ -29,7 +29,7 @@ jobs:
       - name: Run tests
         run: |
           echo "Running tests..."
-          python app.py  # Tutaj możesz podmienić na testy jednostkowe
+          python -m unittest discover tests  # Tutaj możesz podmienić na testy jednostkowe
 
   deploy:
     needs: build-and-test
