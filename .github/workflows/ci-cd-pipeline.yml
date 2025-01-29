@@ -16,24 +16,16 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up py
-        uses: actions/setup-py@v4
+      - name: Set up Python
+        uses: actions/setup-python@v4
         with:
-          py-version: '3.x'
+          python-version: '3.x'
 
       - name: Install dependencies
         run: |
-          py -m pip install --upgrade pip
+          python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
       - name: Run tests
         run: |
-          echo "Running tests..."
-          python -m unittest discover -s tests -p "test_*.py"
-
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy (symulacja)
-        run: echo "Deployment step (Tu można dodać wdrażanie na serwer)"
+          python -m unittest discover tests
