@@ -16,10 +16,10 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
+      - name: Set up py
+        uses: actions/setup-py@v4
         with:
-          python-version: '3.x'
+          py-version: '3.x'
 
       - name: Install dependencies
         run: |
