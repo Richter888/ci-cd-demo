@@ -1,1 +1,2 @@
-print("Hello, CI/CD!")
+def hello_world():
+    return "Hello, CI/CD!"
