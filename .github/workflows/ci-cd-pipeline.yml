@@ -9,12 +9,12 @@ on:
       - main
 
 jobs:
-  build-and-test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -26,6 +26,12 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      - name: Lint code
+        run: |
+          pip install flake8
+          flake8 .
+
       - name: Run tests
         run: |
-          py -m unittest discover tests
+          echo "Running tests..."
+          python -m unittest discover -s tests -p "test_*.py"
